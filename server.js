@@ -19,10 +19,9 @@ app.use("/api/auth",authrouter)
 
 
 app.get('/', (req, res) => {
-    res.send("hello")
+    res.send("hello ")
   });
   
-
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
