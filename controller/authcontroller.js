@@ -35,4 +35,21 @@ export async function register(req ,res){
         token
 
     })
+
+    
 }
+export async function getme(req,res){
+       const token=req.headers.authorization?.split(" ")[1];
+       if(!token){
+        res.status(401).send("Token not found");
+       }
+       const decoded=jwt.verify(token,config.JWT_SECRET);
+       console.log(decoded);
+       const userdata=await User.findById(decoded.id)
+
+       res.status(200).json({
+        message:"user fetched successfully",
+        username:userdata.username,
+        email:userdata.email
+       })
+    }
