@@ -39,6 +39,8 @@ export async function register(req ,res){
     
 }
 export async function getme(req,res){
+    
+    // ? means only call .split(" ") if req.headers.authorization actually exists.-->optional chaining
        const token=req.headers.authorization?.split(" ")[1];
        if(!token){
         res.status(401).send("Token not found");
